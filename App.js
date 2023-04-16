@@ -12,7 +12,14 @@ import { AntDesign } from "@expo/vector-icons";
 import { useFonts } from "expo-font";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer, useNavigation } from "@react-navigation/native";
-
+import {
+  responsiveHeight,
+  responsiveWidth,
+  responsiveFontSize,
+  responsiveScreenHeight,
+  responsiveScreenWidth,
+  responsiveScreenFontSize,
+} from "react-native-responsive-dimensions";
 import Home from "./pages/Home";
 import KosDetail from "./pages/KosDetail";
 import SplashScreen from "./pages/SplashScreen";
@@ -22,7 +29,17 @@ import SignUp from "./pages/SignUp";
 
 const width = Dimensions.get("screen").width;
 const height = Dimensions.get("screen").height;
-const COLORS = { primary: "#40BFFF", white: "#FFFFFF", abu1: "#F6F6F6" };
+const COLORS = {
+  primary: "#00AAFF",
+  white: "#FFFFFF",
+  orange: "#FFBC14",
+  abuabu: "#9098B1",
+  abusoft: "#EBF0FF",
+  black: "#151515",
+  black_soft: "#202020",
+  green: "#3AF891",
+  grey_soft: "#C9C9C9",
+};
 
 const Tab = createBottomTabNavigator();
 
@@ -58,10 +75,11 @@ function Back2() {
 function Koskosan() {
   const navigation = useNavigation();
   return (
-    <View style={{ paddingLeft: 12 }}>
+    <View style={{ paddingLeft: 0 }}>
       <Image
-        style={{ width: 140, height: 30 }}
-        source={require("./assets/img/icon/koskosan3.png")}
+        resizeMode="contain"
+        style={{ width: responsiveWidth(25), height: responsiveHeight(2.5) }}
+        source={require("./assets/img/icon/splash.png")}
       />
     </View>
   );
@@ -77,6 +95,21 @@ function Akun() {
       }}
     >
       <Text>Akun</Text>
+    </View>
+  );
+}
+
+function Pencarian() {
+  return (
+    <View
+      style={{
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "white",
+      }}
+    >
+      <Text>Pencarian</Text>
     </View>
   );
 }
@@ -115,20 +148,23 @@ const App = () => {
             color: COLORS.primary,
           },
           headerStyle: {
-            backgroundColor: COLORS.white,
-            elevation: 3,
+            backgroundColor: COLORS.black,
+            elevation: 0,
           },
           headerTitleAlign: "center",
           tabBarHideOnKeyboard: true,
           tabBarShowLabel: false,
           tabBarStyle: {
-            // backgroundColor: "#40BFFF",
+            backgroundColor: COLORS.black,
+            // opacity: 0.1,
             // position: "absolute",
             // bottom: 15,
             // marginHorizontal: 40,
-            // elevation: 0,
+            elevation: 0,
             // borderRadius: 15,
+            borderTopWidth: 0,
             height: 60,
+
             // ...styles.shadow,
           },
         }}
@@ -196,10 +232,12 @@ const App = () => {
           name="Home"
           component={Home}
           options={{
-            headerTransparent: true,
-            title: "",
-            // tabBarStyle: {display: 'none'},
-            headerLeft: () => <Koskosan />,
+            // headerTransparent: true,
+            headerTitle: () => <Koskosan />,
+            // headerShown: true,
+            // // tabBarStyle: {display: 'none'},
+            // headerLeft: () => <Koskosan />,
+
             tabBarIcon: ({ focused }) => {
               return (
                 <View style={styles.buttonicon}>
@@ -214,15 +252,16 @@ const App = () => {
                       alignItems: "center",
                       width: 20,
                       height: 20,
-                      tintColor: focused ? COLORS.primary : "#B2B6C1",
+                      tintColor: focused ? COLORS.green : "#B2B6C1",
                     }}
                   />
                   <Text
                     style={{
-                      color: focused ? COLORS.primary : "#B2B6C1",
+                      color: focused ? COLORS.green : "#B2B6C1",
                       fontSize: 12,
                       alignItems: "center",
                       fontFamily: "Poppins-Regular",
+                      marginTop: 5,
                     }}
                   >
                     Beranda
@@ -232,6 +271,47 @@ const App = () => {
             },
           }}
         />
+
+        <Tab.Screen
+          name="Pencarian"
+          component={Pencarian}
+          options={{
+            title: "Pencarian",
+            headerShown: false,
+            tabBarIcon: ({ focused }) => {
+              return (
+                <View style={styles.buttonicon}>
+                  <Image
+                    source={
+                      focused
+                        ? require("./assets/img/icon/tabbar_pencarian.png")
+                        : require("./assets/img/icon/tabbar_pencarian.png")
+                    }
+                    resizeMode="contain"
+                    style={{
+                      alignItems: "center",
+                      width: 20,
+                      height: 20,
+                      tintColor: focused ? COLORS.green : "#B2B6C1",
+                    }}
+                  />
+                  <Text
+                    style={{
+                      color: focused ? COLORS.green : "#B2B6C1",
+                      fontSize: 12,
+                      alignItems: "center",
+                      fontFamily: "Poppins-Regular",
+                      marginTop: 5,
+                    }}
+                  >
+                    Pencarian
+                  </Text>
+                </View>
+              );
+            },
+          }}
+        />
+
         <Tab.Screen
           name="Akun"
           component={Akun}
@@ -251,15 +331,16 @@ const App = () => {
                       alignItems: "center",
                       width: 20,
                       height: 20,
-                      tintColor: focused ? COLORS.primary : "#B2B6C1",
+                      tintColor: focused ? COLORS.green : "#B2B6C1",
                     }}
                   />
                   <Text
                     style={{
-                      color: focused ? COLORS.primary : "#B2B6C1",
+                      color: focused ? COLORS.green : "#B2B6C1",
                       fontSize: 12,
                       alignItems: "center",
                       fontFamily: "Poppins-Regular",
+                      marginTop: 5,
                     }}
                   >
                     Profil

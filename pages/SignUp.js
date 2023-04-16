@@ -39,6 +39,7 @@ const COLORS = {
 
 export default function SignUp() {
   const navigation = useNavigation();
+  const [isSecureEntry, setIsSecureEntry] = useState(true);
 
   return (
     <KeyboardAwareScrollView extraHeight={100} enableOnAndroid>
@@ -180,7 +181,7 @@ export default function SignUp() {
                     placeholderTextColor={COLORS.white}
                   />
                 </View>
-                <View style={styles.image_container}>
+                <View style={styles.show_container}>
                   <Image
                     style={styles.iconselect_style}
                     source={require("./../assets/img/icon/icon_select.png")}
@@ -199,10 +200,30 @@ export default function SignUp() {
                   <TextInput
                     style={styles.input_style}
                     placeholder="Kata Sandi"
-                    secureTextEntry={true}
+                    secureTextEntry={isSecureEntry}
                     placeholderTextColor={COLORS.white}
                   />
                 </View>
+                <TouchableOpacity
+                  onPress={() => {
+                    setIsSecureEntry((prev) => !prev);
+                  }}
+                  style={styles.show_container}
+                >
+                  {/* <Text style={{ color: COLORS.white }}>
+                    {" "}
+                    {isSecureEntry ? "Show" : "Hide"}{" "}
+                  </Text> */}
+
+                  <Image
+                    style={styles.icon_style}
+                    source={
+                      isSecureEntry
+                        ? require("./../assets/img/icon/icon_eye2.png")
+                        : require("./../assets/img/icon/icon_eye1.png")
+                    }
+                  />
+                </TouchableOpacity>
               </View>
 
               <TouchableOpacity
@@ -299,8 +320,8 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   icon_style: {
-    width: 20,
-    height: 20,
+    width: "45%",
+    height: "45%",
     tintColor: COLORS.white,
   },
   iconselect_style: {
@@ -317,7 +338,7 @@ const styles = StyleSheet.create({
   },
   input_container: {
     // backgroundColor: "yellow",
-    width: "80%",
+    width: "75%",
     height: "100%",
     justifyContent: "center",
     color: COLORS.white,
@@ -375,5 +396,13 @@ const styles = StyleSheet.create({
   modalText: {
     marginBottom: 15,
     textAlign: "center",
+  },
+  show_container: {
+    width: "15%",
+    height: "100%",
+    justifyContent: "center",
+    alignItems: "center",
+    // backgroundColor: COLORS.abusoft,
+    // opacity: 0.5,
   },
 });

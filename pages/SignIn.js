@@ -134,8 +134,6 @@ export default function SignIn() {
                     placeholder="Masukan Kata Sandi"
                     secureTextEntry={isSecureEntry}
                     placeholderTextColor={COLORS.abuabu}
-                    icon={<Text>Show</Text>}
-                    iconPosition="right"
                   />
                 </View>
 

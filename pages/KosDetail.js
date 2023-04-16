@@ -10,9 +10,29 @@ import {
 import React, { Component, useState } from "react";
 
 import { ScrollView } from "react-native";
-const width = Dimensions.get("screen").width;
-const height = Dimensions.get("screen").height;
-const COLORS = { primary: "#40BFFF", white: "#FFFFFF" };
+import {
+  responsiveHeight,
+  responsiveWidth,
+  responsiveFontSize,
+  responsiveScreenHeight,
+  responsiveScreenWidth,
+  responsiveScreenFontSize,
+} from "react-native-responsive-dimensions";
+import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
+
+const WIDTH = Dimensions.get("screen").width;
+const HEIGHT = Dimensions.get("screen").height;
+const COLORS = {
+  primary: "#00AAFF",
+  white: "#FFFFFF",
+  orange: "#FFBC14",
+  abuabu: "#9098B1",
+  abusoft: "#EBF0FF",
+  black: "#151515",
+  black_soft: "#202020",
+  green: "#3AF891",
+  grey_soft: "#C9C9C9",
+};
 const images = [
   "https://cdn.pixabay.com/photo/2015/12/01/20/28/road-1072823__480.jpg",
   "https://cdn.pixabay.com/photo/2014/02/27/16/10/flowers-276014__480.jpg",
@@ -36,10 +56,10 @@ export default function KosDetail() {
   };
   return (
     <View style={styles.container}>
-      <StatusBar barStyle="light-content" backgroundColor={COLORS.primary} />
+      <StatusBar barStyle="light-content" backgroundColor={COLORS.black} />
       <View>
         <ScrollView
-          style={{ width: width, height: 250 }}
+          style={{ width: WIDTH, height: 250 }}
           onScroll={({ nativeEvent }) => onchange(nativeEvent)}
           showsHorizontalScrollIndicator={false}
           pagingEnabled
@@ -81,7 +101,7 @@ const styles = StyleSheet.create({
     // justifyContent: "center",
   },
   img_style: {
-    width: width,
+    width: WIDTH,
     height: 300,
     // marginRight: 10,
   },
