@@ -38,6 +38,7 @@ const COLORS = {
   black_transparent: "#292E32",
   font_color: "#E3E3E3",
   grey_1: "#878787",
+  transparent: "#4A46464C",
 };
 export default function Home() {
   const navigation = useNavigation();
@@ -80,7 +81,8 @@ export default function Home() {
             marginVertical: 15,
           }}
         >
-          <View
+          <TouchableOpacity
+            onPress={() => navigation.navigate("P encarian")}
             style={{
               backgroundColor: COLORS.black_transparent,
               width: responsiveWidth(78),
@@ -90,7 +92,7 @@ export default function Home() {
               justifyContent: "center",
             }}
           >
-            <TextInput
+            {/* <TextInput
               style={{
                 width: "85%",
                 height: "90%",
@@ -100,8 +102,12 @@ export default function Home() {
               }}
               placeholder="Cari di sini"
               placeholderTextColor={COLORS.white}
-            />
-          </View>
+            /> */}
+
+            <Text style={{ fontFamily: "Lato-Regular", color: COLORS.white }}>
+              Cari kost di sini
+            </Text>
+          </TouchableOpacity>
           <TouchableOpacity
             style={{
               backgroundColor: COLORS.black_transparent,
@@ -152,7 +158,7 @@ export default function Home() {
                   source={require("./../assets/img/icon/location2.png")}
                 />
                 <Text style={styles.alamat_style}>
-                  Dukuh Waluh, Purwokerto Timur
+                  Desa Ledug, Kembaran, Banyumas
                 </Text>
               </View>
               {/* <Text style={styles.fasilitas_style} numberOfLines={1}>
@@ -270,309 +276,61 @@ export default function Home() {
           </TouchableOpacity>
         </ScrollView>
 
-        <Text
+        <View
           style={{
-            fontFamily: "Lato-Bold",
-            color: COLORS.white,
-            fontSize: responsiveFontSize(2),
-            marginLeft: responsiveWidth(5),
+            marginTop: 15,
+            // backgroundColor: "grey",
+            width: responsiveWidth(90),
+            marginHorizontal: responsiveWidth(5),
           }}
         >
-          Yang terdekat dengan kamu
-        </Text>
-        <ScrollView horizontal={true} style={styles.scroll}>
-          {/* //! Box style */}
-          <TouchableOpacity
-            style={styles.box}
-            onPress={() => navigation.navigate("KosDetail")}
+          <Text
+            style={{
+              fontFamily: "Lato-Bold",
+              color: COLORS.white,
+              fontSize: responsiveFontSize(2),
+            }}
           >
-            <View>
-              <Image
-                style={styles.img}
-                source={require("./../assets/img/foto/kos5.jpg")}
-              />
-              <View style={styles.jeniskos_style}>
-                <Text style={styles.jeniskos}>PUTRA</Text>
-              </View>
-            </View>
+            Rekomendasi
+          </Text>
 
-            <View style={styles.keterangan_container}>
-              <Text style={styles.namakos_style}>Kos Elite Harmoni</Text>
-              <View style={styles.alamat_container}>
-                <Image
-                  style={styles.alamat_img}
-                  source={require("./../assets/img/icon/location2.png")}
-                />
-                <Text style={styles.alamat_style}>
-                  Dukuh Waluh, Purwokerto Timur
-                </Text>
-              </View>
-              {/* <Text style={styles.fasilitas_style} numberOfLines={1}>
-                K. Mandi Dalam, Wifi, Kloset Duduk, Lemari, Meja Belajar
-              </Text> */}
-            </View>
-            <View style={styles.line_container}>
-              <View style={styles.line_style}></View>
-            </View>
-            <View style={styles.harga_container}>
-              <View style={styles.harga_text_container}>
-                <Text style={styles.hargaRP_style}>Rp.</Text>
-                <Text style={styles.harga_style}> 1.500.000</Text>
-                <Text style={styles.perbulan_style}> / Bulan</Text>
-              </View>
+          <View
+            style={{
+              backgroundColor: COLORS.black_transparent,
+              width: responsiveWidth(90),
 
-              <View>
-                <Text style={styles.sisakamar_style}> Sisa 3 Kamar</Text>
-              </View>
-            </View>
-          </TouchableOpacity>
-
-          {/* //! Box style */}
-          <TouchableOpacity
-            style={styles.box}
-            onPress={() => navigation.navigate("KosDetail")}
+              // height: 400,
+              marginTop: 10,
+              marginRight: 10,
+              borderRadius: 10,
+              paddingBottom: 5,
+              padding: 5,
+              flexDirection: "row",
+            }}
           >
-            <View>
+            <View
+              style={{
+                width: responsiveWidth(26),
+                height: responsiveWidth(26),
+              }}
+            >
               <Image
-                style={styles.img}
-                source={require("./../assets/img/foto/kos6.jpg")}
-              />
-              <View style={styles.jeniskos_style}>
-                <Text style={styles.jeniskos}>PUTRI</Text>
-              </View>
-            </View>
-
-            <View style={styles.keterangan_container}>
-              <Text style={styles.namakos_style}>Kost Dahlia Ibu Nono</Text>
-              <View style={styles.alamat_container}>
-                <Image
-                  style={styles.alamat_img}
-                  source={require("./../assets/img/icon/location2.png")}
-                />
-                <Text style={styles.alamat_style}>
-                  Dukuh Waluh, Purwokerto Timur
-                </Text>
-              </View>
-              {/* <Text style={styles.fasilitas_style} numberOfLines={1}>
-                K. Mandi Dalam, Wifi, Kloset Duduk, Lemari, Meja Belajar
-              </Text> */}
-            </View>
-            <View style={styles.line_container}>
-              <View style={styles.line_style}></View>
-            </View>
-            <View style={styles.harga_container}>
-              <View style={styles.harga_text_container}>
-                <Text style={styles.hargaRP_style}>Rp.</Text>
-                <Text style={styles.harga_style}> 600.000</Text>
-                <Text style={styles.perbulan_style}> / Bulan</Text>
-              </View>
-
-              <View>
-                <Text style={styles.sisakamar_style}> Sisa 0 Kamar</Text>
-              </View>
-            </View>
-          </TouchableOpacity>
-
-          {/* //! Box style */}
-          <TouchableOpacity
-            style={styles.box}
-            onPress={() => navigation.navigate("KosDetail")}
-          >
-            <View>
-              <Image
-                style={styles.img}
+                style={styles.img_2}
                 source={require("./../assets/img/foto/kos7.jpg")}
               />
               <View style={styles.jeniskos_style}>
                 <Text style={styles.jeniskos}>CAMPUR</Text>
               </View>
             </View>
-
-            <View style={styles.keterangan_container}>
-              <Text style={styles.namakos_style} numberOfLines={1}>
-                Wisma Napoleon Bonaparte
-              </Text>
-              <View style={styles.alamat_container}>
-                <Image
-                  style={styles.alamat_img}
-                  source={require("./../assets/img/icon/location2.png")}
-                />
-                <Text style={styles.alamat_style} numberOfLines={1}>
-                  Dukuh Waluh, Purwokerto Timur
-                </Text>
-              </View>
-              {/* <Text style={styles.fasilitas_style} numberOfLines={1}>
-                K. Mandi Dalam, Wifi, Kloset Duduk, Lemari, Meja Belajar
-              </Text> */}
-            </View>
-            <View style={styles.line_container}>
-              <View style={styles.line_style}></View>
-            </View>
-            <View style={styles.harga_container}>
-              <View style={styles.harga_text_container}>
-                <Text style={styles.hargaRP_style}>Rp.</Text>
-                <Text style={styles.harga_style}> 1.150.000</Text>
-                <Text style={styles.perbulan_style}> / Bulan</Text>
-              </View>
-
-              <View>
-                <Text style={styles.sisakamar_style}> Sisa 1 Kamar</Text>
-              </View>
-            </View>
-          </TouchableOpacity>
-        </ScrollView>
-
-        <Text
-          style={{
-            fontFamily: "Lato-Bold",
-            color: COLORS.white,
-            fontSize: responsiveFontSize(2),
-            marginLeft: responsiveWidth(5),
-          }}
-        >
-          Yang terdekat dengan kamu
-        </Text>
-        <ScrollView horizontal={true} style={styles.scroll}>
-          {/* //! Box style */}
-          <TouchableOpacity
-            style={styles.box}
-            onPress={() => navigation.navigate("KosDetail")}
-          >
-            <View>
-              <Image
-                style={styles.img}
-                source={require("./../assets/img/foto/kos5.jpg")}
-              />
-              <View style={styles.jeniskos_style}>
-                <Text style={styles.jeniskos}>PUTRA</Text>
-              </View>
-            </View>
-
-            <View style={styles.keterangan_container}>
-              <Text style={styles.namakos_style}>Kos Elite Harmoni</Text>
-              <View style={styles.alamat_container}>
-                <Image
-                  style={styles.alamat_img}
-                  source={require("./../assets/img/icon/location2.png")}
-                />
-                <Text style={styles.alamat_style}>
-                  Dukuh Waluh, Purwokerto Timur
-                </Text>
-              </View>
-              {/* <Text style={styles.fasilitas_style} numberOfLines={1}>
-                K. Mandi Dalam, Wifi, Kloset Duduk, Lemari, Meja Belajar
-              </Text> */}
-            </View>
-            <View style={styles.line_container}>
-              <View style={styles.line_style}></View>
-            </View>
-            <View style={styles.harga_container}>
-              <View style={styles.harga_text_container}>
-                <Text style={styles.hargaRP_style}>Rp.</Text>
-                <Text style={styles.harga_style}> 1.500.000</Text>
-                <Text style={styles.perbulan_style}> / Bulan</Text>
-              </View>
-
-              <View>
-                <Text style={styles.sisakamar_style}> Sisa 3 Kamar</Text>
-              </View>
-            </View>
-          </TouchableOpacity>
-
-          {/* //! Box style */}
-          <TouchableOpacity
-            style={styles.box}
-            onPress={() => navigation.navigate("KosDetail")}
-          >
-            <View>
-              <Image
-                style={styles.img}
-                source={require("./../assets/img/foto/kos6.jpg")}
-              />
-              <View style={styles.jeniskos_style}>
-                <Text style={styles.jeniskos}>PUTRI</Text>
-              </View>
-            </View>
-
-            <View style={styles.keterangan_container}>
-              <Text style={styles.namakos_style}>Kost Dahlia Ibu Nono</Text>
-              <View style={styles.alamat_container}>
-                <Image
-                  style={styles.alamat_img}
-                  source={require("./../assets/img/icon/location2.png")}
-                />
-                <Text style={styles.alamat_style}>
-                  Dukuh Waluh, Purwokerto Timur
-                </Text>
-              </View>
-              {/* <Text style={styles.fasilitas_style} numberOfLines={1}>
-                K. Mandi Dalam, Wifi, Kloset Duduk, Lemari, Meja Belajar
-              </Text> */}
-            </View>
-            <View style={styles.line_container}>
-              <View style={styles.line_style}></View>
-            </View>
-            <View style={styles.harga_container}>
-              <View style={styles.harga_text_container}>
-                <Text style={styles.hargaRP_style}>Rp.</Text>
-                <Text style={styles.harga_style}> 600.000</Text>
-                <Text style={styles.perbulan_style}> / Bulan</Text>
-              </View>
-
-              <View>
-                <Text style={styles.sisakamar_style}> Sisa 0 Kamar</Text>
-              </View>
-            </View>
-          </TouchableOpacity>
-
-          {/* //! Box style */}
-          <TouchableOpacity
-            style={styles.box}
-            onPress={() => navigation.navigate("KosDetail")}
-          >
-            <View>
-              <Image
-                style={styles.img}
-                source={require("./../assets/img/foto/kos7.jpg")}
-              />
-              <View style={styles.jeniskos_style}>
-                <Text style={styles.jeniskos}>CAMPUR</Text>
-              </View>
-            </View>
-
-            <View style={styles.keterangan_container}>
-              <Text style={styles.namakos_style} numberOfLines={1}>
-                Wisma Napoleon Bonaparte
-              </Text>
-              <View style={styles.alamat_container}>
-                <Image
-                  style={styles.alamat_img}
-                  source={require("./../assets/img/icon/location2.png")}
-                />
-                <Text style={styles.alamat_style} numberOfLines={1}>
-                  Dukuh Waluh, Purwokerto Timur
-                </Text>
-              </View>
-              {/* <Text style={styles.fasilitas_style} numberOfLines={1}>
-                K. Mandi Dalam, Wifi, Kloset Duduk, Lemari, Meja Belajar
-              </Text> */}
-            </View>
-            <View style={styles.line_container}>
-              <View style={styles.line_style}></View>
-            </View>
-            <View style={styles.harga_container}>
-              <View style={styles.harga_text_container}>
-                <Text style={styles.hargaRP_style}>Rp.</Text>
-                <Text style={styles.harga_style}> 1.150.000</Text>
-                <Text style={styles.perbulan_style}> / Bulan</Text>
-              </View>
-
-              <View>
-                <Text style={styles.sisakamar_style}> Sisa 1 Kamar</Text>
-              </View>
-            </View>
-          </TouchableOpacity>
-        </ScrollView>
+            <View
+              style={{
+                width: responsiveWidth(60),
+                height: responsiveWidth(26),
+                backgroundColor: "white",
+              }}
+            ></View>
+          </View>
+        </View>
       </ScrollView>
     </View>
   );
@@ -608,7 +366,12 @@ const styles = StyleSheet.create({
   },
   img: {
     width: "100%",
-    height: 110,
+    height: responsiveWidth(26),
+    borderRadius: 7,
+  },
+  img_2: {
+    width: "100%",
+    height: "100%",
     borderRadius: 7,
   },
   jenis_style: {
@@ -617,7 +380,7 @@ const styles = StyleSheet.create({
   },
   jeniskos_style: {
     padding: 5,
-    backgroundColor: COLORS.green,
+    backgroundColor: "#0000004D",
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 5,
@@ -627,9 +390,9 @@ const styles = StyleSheet.create({
     top: responsiveHeight(0.5),
   },
   jeniskos: {
-    fontFamily: "Roboto-Bold",
-    color: "black",
-    fontSize: responsiveFontSize(1),
+    fontFamily: "Roboto-Medium",
+    color: "white",
+    fontSize: responsiveFontSize(1.3),
   },
   keterangan_container: { marginTop: 10, marginLeft: 5, marginRight: 5 },
   alamat_container: {
